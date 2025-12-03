@@ -1,5 +1,5 @@
 """
-App Streamlit - Bônus de Desempenho LogArte
+Bônus de Desempenho
 
 Funcionalidades principais:
 - Upload de múltiplos arquivos Excel da planilha de viagens
@@ -50,7 +50,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("📊 Sistema de Cálculo de Bônus – LogArte")
+st.title("📊 Cálculo de Bônus")
 
 st.markdown(
     """
@@ -398,7 +398,7 @@ def gerar_excel_para_download(
 st.sidebar.header("⚙️ Configurações")
 
 uploaded_files = st.sidebar.file_uploader(
-    "1) Envie os arquivos Excel de viagens",
+    "1) Envie os arquivos xlsx de viagens",
     type=["xlsx"],
     accept_multiple_files=True,
     help="Planilhas com a aba 'Controle de viagens'. Você pode enviar mais de um arquivo.",
@@ -434,7 +434,7 @@ if uploaded_files:
         st.sidebar.error("A data inicial não pode ser maior que a data final.")
         st.stop()
 
-    if st.sidebar.button("🚀 Calcular bônus e gerar relatórios"):
+    if st.sidebar.button("Calcular bônus"):
         with st.spinner("Processando dados, calculando bônus e gerando gráficos..."):
             try:
                 dados_filtrados = limpar_e_filtrar_dados(dados_raw, data_ini, data_fim)
@@ -461,20 +461,20 @@ if uploaded_files:
         # --------------------------------------------------------------------
         # VISÃO GERAL / TABELAS
         # --------------------------------------------------------------------
-        st.subheader("📋 Tabela filtrada (amostra)")
+        st.subheader("📋 Amostra da tabela filtrada")
         st.dataframe(dados_filtrados.head(20))
 
         col1, col2 = st.columns(2)
 
         with col1:
-            st.subheader("🚗 Bônus por Motorista e Centro de Custo")
+            st.subheader("Bônus por Motorista e Centro de Custo")
             st.dataframe(tabela)
 
         with col2:
-            st.subheader("💰 Resumo de Bônus por Motorista")
+            st.subheader("Resumo de Bônus por Motorista")
             st.dataframe(bonus_motorista)
 
-        st.subheader("🏷️ Bônus por Centro de Custo")
+        st.subheader("Bônus por Centro de Custo")
         st.dataframe(resumo_centro_custo)
 
         # --------------------------------------------------------------------
@@ -494,7 +494,7 @@ if uploaded_files:
         # --------------------------------------------------------------------
         # DIAS TRABALHADOS
         # --------------------------------------------------------------------
-        st.subheader("📆 Dias trabalhados por motorista")
+        st.subheader("📆 Dias que houveram entrega por motorista")
         st.dataframe(tabela_dias)
 
         # --------------------------------------------------------------------
