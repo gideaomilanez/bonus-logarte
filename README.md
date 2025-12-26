@@ -1,5 +1,4 @@
-# 📊 Bônus de Desempenho – LogArte
-
+# 📊 Bônus de Desempenho
 Aplicativo em **Python + Streamlit** para cálculo e análise do **bônus de desempenho dos motoristas** da LogArte, a partir das planilhas de **Controle de viagens**.
 
 ## ✨ Funcionalidades
